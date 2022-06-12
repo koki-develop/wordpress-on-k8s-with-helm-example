@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql@sha256:06c614dfc9720ccc0177acf700d0e0794f0efe3a032e78ea5318c30886ce62c1
+        image: {{ .Values.db.image | quote }}
         ports:
         - name: mysql
           containerPort: 3306

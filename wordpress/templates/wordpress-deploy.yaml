@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: wordpress
-          image: wordpress:6.0.0
+          image: {{ .Values.wordpress.image | quote }}
           ports:
             - name: http
               containerPort: 80

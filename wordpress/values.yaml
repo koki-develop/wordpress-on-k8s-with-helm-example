@@ -1,4 +1,8 @@
+wordpress:
+  image: "wordpress:6.0.0"
+
 db:
+  image: mysql@sha256:06c614dfc9720ccc0177acf700d0e0794f0efe3a032e78ea5318c30886ce62c1
   username: "wordpress"
   rootPassword: "p@ssw0rd"
   password: "p@ssw0rd"
