@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-wordpress-mysql
+  labels:
+    {{- include "wordpress.labels" . | indent 4 }}
+spec:
+  ports:
+  - port: 3306
+  selector:
+    {{- include "wordpress.mysql.labels" . | indent 4 }}
+  clusterIP: None
