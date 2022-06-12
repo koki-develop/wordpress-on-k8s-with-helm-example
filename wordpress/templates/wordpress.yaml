@@ -3,14 +3,13 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}-wordpress
   labels:
-    app: wordpress
+    {{- include "wordpress.labels" . | indent 4 }}
 spec:
   ports:
     - name: http
       port: 80
   selector:
-    app: wordpress
-    tier: frontend
+    {{- include "wordpress.frontend.labels" . | indent 4 }}
 
 ---
 apiVersion: networking.k8s.io/v1
@@ -18,7 +17,7 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}-wordpress-ingress
   labels:
-    app: wordpress
+    {{- include "wordpress.labels" . | indent 4 }}
 spec:
   rules:
     - http:
@@ -37,7 +36,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ .Release.Name }}-wp-pv-claim
   labels:
-    app: wordpress
+    {{- include "wordpress.labels" . | indent 4 }}
 spec:
   accessModes:
     - ReadWriteOnce
@@ -51,19 +50,17 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}-wordpress
   labels:
-    app: wordpress
+    {{- include "wordpress.labels" . | indent 4 }}
 spec:
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: wordpress
-      tier: frontend
+      {{- include "wordpress.frontend.labels" . | indent 6 }}
   template:
     metadata:
       labels:
-        app: wordpress
-        tier: frontend
+        {{- include "wordpress.frontend.labels" . | indent 8 }}
     spec:
       containers:
         - name: wordpress
