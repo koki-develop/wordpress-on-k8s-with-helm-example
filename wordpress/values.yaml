@@ -1,4 +1,4 @@
 db:
   username: "wordpress"
-  root_password: "p@ssw0rd"
+  rootPassword: "p@ssw0rd"
   password: "p@ssw0rd"

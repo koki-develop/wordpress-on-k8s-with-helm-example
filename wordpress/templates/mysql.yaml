@@ -70,5 +70,5 @@ kind: Secret
 metadata:
   name: {{ .Release.Name }}-mysql-password
 data:
-  root: {{ .Values.db.root_password | b64enc | quote }}
+  root: {{ .Values.db.rootPassword | b64enc | quote }}
   wordpress: {{ .Values.db.password | b64enc | quote }}
